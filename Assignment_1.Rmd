@@ -1,0 +1,84 @@
+---
+title: "FML_Assignment 1"
+author: "Divya SingiReddy"
+date: "2024-02-03"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=TRUE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##Load the dataset (I have downloaded it from Business Analytics Fall Class which we used for practice and saved as 'house_data')
+
+```{r}
+library(ggplot2)
+
+house_data <- read.csv("C:/Users/divya/OneDrive/Desktop/Rhistory/house_data.csv")
+
+```
+
+
+##Viewing the dataset
+```{r}
+
+head(house_data)
+
+```
+
+##Descriptive statistics for quantitative variables
+
+```{r}
+
+quantitative_vars <- house_data[, c("bedrooms", "bathrooms")]
+
+summary(quantitative_vars)
+
+```
+##Descriptive statistics for categorical variables
+
+```{r}
+
+Categorical_var <- house_data[, c("parking", "stories")]
+
+table(Categorical_var)
+
+```
+#Transforming variables
+
+```{r}
+
+log(house_data$price)
+
+```
+
+```{r}
+
+log(house_data$area)
+
+```
+```{r}
+
+R <- house_data$price- house_data$area - max(house_data$price)/min(house_data$price)
+
+R
+
+```
+
+##Plotting Variable
+
+```{r}
+
+hist(house_data$price,main = "HISTOGRAM OF PRICE")
+
+```
+
+##scatterplot of 2 variables
+
+```{r}
+
+plot(house_data$price, house_data$area, main = "scatterplot")
+
+```
